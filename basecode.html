@@ -1,0 +1,1436 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LIFEPASS | Digital Product Passport</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        /* NAVBAR */
+        nav {
+            background: #071a3d;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #3b82f6;
+        }
+
+        nav button {
+            background: transparent;
+            border: 1px solid #ffffff55;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background: #ffffff15;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #071a3d, #123b7a);
+            color: white;
+            padding: 75px 7%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #dbeafe;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 6px;
+        }
+
+        .primary-btn {
+            border: none;
+            background: #3b82f6;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #2563eb;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .secondary-btn:hover {
+            background: white;
+            color: #071a3d;
+        }
+
+        /* FLOW */
+        .section {
+            padding: 55px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #071a3d;
+        }
+
+        .section-title p {
+            margin-top: 8px;
+            color: #64748b;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .flow-card {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #0000000d;
+        }
+
+        .flow-number {
+            width: 42px;
+            height: 42px;
+            background: #dbeafe;
+            color: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+
+        .flow-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .flow-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* PRODUCT TYPES */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px #00000012;
+        }
+
+        .product-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            color: #64748b;
+            margin-top: 7px;
+            font-size: 14px;
+        }
+
+        /* APP AREA */
+        .app-section {
+            background: #eaf1fb;
+            padding: 60px 7%;
+        }
+
+        .app-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .panel {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px #00000010;
+            margin-bottom: 25px;
+        }
+
+        .panel h2 {
+            color: #071a3d;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #3b82f6;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            margin-top: 20px;
+        }
+
+        /* PASSPORT */
+        .passport {
+            border: 2px solid #dbeafe;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .passport-header {
+            background: #071a3d;
+            color: white;
+            padding: 22px;
+        }
+
+        .passport-header h2 {
+            color: white;
+            margin: 0;
+        }
+
+        .passport-body {
+            padding: 25px;
+        }
+
+        .passport-id {
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 12px;
+            border-radius: 7px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .detail {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .detail small {
+            display: block;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .history {
+            margin-top: 25px;
+        }
+
+        .history-item {
+            border-left: 3px solid #3b82f6;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            background: #f8fafc;
+        }
+
+        .history-item strong {
+            display: block;
+        }
+
+        .danger-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .small-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+
+        .empty {
+            text-align: center;
+            color: #64748b;
+            padding: 30px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #071a3d;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+            .flow {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .products {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            .hero {
+                padding: 55px 5%;
+            }
+
+            .section,
+            .app-section {
+                padding: 40px 5%;
+            }
+
+            .flow,
+            .products,
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">LIFE<span>PASS</span></div>
+
+    <div>
+        <button onclick="showCreate()">Create Passport</button>
+        <button onclick="showSearch()">View Passport</button>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>Every Product Has a <span>Story.</span></h1>
+
+    <p>
+        LIFEPASS creates a digital passport for your products.
+        Keep purchase details, warranty, service records and ownership
+        history together in one place.
+    </p>
+
+    <div class="hero-buttons">
+        <button class="primary-btn" onclick="showCreate()">
+            + Create Product Passport
+        </button>
+
+        <button class="secondary-btn" onclick="showSearch()">
+            🔎 View Passport
+        </button>
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>How LIFEPASS Works</h2>
+        <p>The passport follows the product, not the owner.</p>
+    </div>
+
+    <div class="flow">
+
+        <div class="flow-card">
+            <div class="flow-number">1</div>
+            <h3>Product</h3>
+            <p>Register your product with important information.</p>
+        </div>
+
+        <div class="flow-card">
+            <div class="flow-number">2</div>
+            <h3>LIFEPASS ID</h3>
+            <p>Get a unique digital passport ID.</p>
+        </div>
+
+        <div class="flow-card">
+            <div class="flow-number">3</div>
+            <h3>Digital History</h3>
+            <p>Store warranty, service and ownership information.</p>
+        </div>
+
+        <div class="flow-card">
+            <div class="flow-number">4</div>
+            <h3>New Owner</h3>
+            <p>The product history can continue with its next owner.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCT TYPES -->
+<section class="section">
+
+    <div class="section-title">
+        <h2>Products You Can Register</h2>
+        <p>Create a digital passport for almost any product.</p>
+    </div>
+
+    <div class="products">
+
+        <div class="product-card" onclick="selectProduct('Laptop')">
+            <div class="product-icon">💻</div>
+            <h3>Laptop</h3>
+            <p>Track warranty, repairs and ownership.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Smartphone')">
+            <div class="product-icon">📱</div>
+            <h3>Smartphone</h3>
+            <p>Keep the complete device history.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Bicycle')">
+            <div class="product-icon">🚲</div>
+            <h3>Bicycle</h3>
+            <p>Record servicing and ownership changes.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Camera')">
+            <div class="product-icon">📷</div>
+            <h3>Camera</h3>
+            <p>Store purchase and service information.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Gaming Console')">
+            <div class="product-icon">🎮</div>
+            <h3>Gaming Console</h3>
+            <p>Maintain a digital product history.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Robot')">
+            <div class="product-icon">🤖</div>
+            <h3>Robot</h3>
+            <p>Track maintenance and ownership.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Television')">
+            <div class="product-icon">📺</div>
+            <h3>Television</h3>
+            <p>Keep warranty and repair records.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Appliance')">
+            <div class="product-icon">🏠</div>
+            <h3>Appliance</h3>
+            <p>Store important appliance information.</p>
+        </div>
+
+        <div class="product-card" onclick="selectProduct('Other')">
+            <div class="product-icon">📦</div>
+            <h3>Other</h3>
+            <p>Create a passport for another product.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- APPLICATION -->
+<section class="app-section" id="app">
+
+    <div class="app-container">
+
+        <!-- CREATE -->
+        <div class="panel hidden" id="createPanel">
+
+            <h2>➕ Create Product Passport</h2>
+
+            <form id="passportForm">
+
+                <label>Product Type</label>
+
+                <select id="productType" required>
+                    <option value="">Select product</option>
+                    <option>Laptop</option>
+                    <option>Smartphone</option>
+                    <option>Bicycle</option>
+                    <option>Camera</option>
+                    <option>Gaming Console</option>
+                    <option>Robot</option>
+                    <option>Television</option>
+                    <option>Appliance</option>
+                    <option>Other</option>
+                </select>
+
+
+                <label>Product Name</label>
+
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Example: Lenovo IdeaPad Slim 3"
+                    required
+                >
+
+
+                <label>Brand</label>
+
+                <input
+                    type="text"
+                    id="brand"
+                    placeholder="Example: Lenovo"
+                    required
+                >
+
+
+                <label>Model Number</label>
+
+                <input
+                    type="text"
+                    id="model"
+                    placeholder="Example: 15IRH8"
+                >
+
+
+                <label>Serial Number</label>
+
+                <input
+                    type="text"
+                    id="serial"
+                    placeholder="Enter serial number"
+                >
+
+
+                <label>Purchase Date</label>
+
+                <input
+                    type="date"
+                    id="purchaseDate"
+                    required
+                >
+
+
+                <label>Warranty Until</label>
+
+                <input
+                    type="date"
+                    id="warrantyDate"
+                >
+
+
+                <label>Current Owner</label>
+
+                <input
+                    type="text"
+                    id="owner"
+                    placeholder="Owner name"
+                    required
+                >
+
+
+                <label>Purchase Price</label>
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="₹"
+                >
+
+
+                <label>Additional Notes</label>
+
+                <textarea
+                    id="notes"
+                    placeholder="Any additional information..."
+                ></textarea>
+
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Create LIFEPASS
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        onclick="hidePanels()"
+                        style="color:#071a3d;border-color:#071a3d;"
+                    >
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="panel hidden" id="searchPanel">
+
+            <h2>🔎 Find a LIFEPASS</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Enter LIFEPASS ID, serial number or product name"
+                oninput="searchPassports()"
+            >
+
+            <div id="searchResults"></div>
+
+        </div>
+
+
+        <!-- VIEW PASSPORT -->
+        <div class="panel hidden" id="viewPanel">
+
+            <div id="passportDisplay"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        <strong>LIFEPASS</strong>
+    </p>
+
+    <p style="margin-top:8px;">
+        Every product has a story. Keep it forever.
+    </p>
+
+    <p style="margin-top:15px;font-size:13px;">
+        © 2026 LIFEPASS
+    </p>
+
+</footer>
+
+
+<script>
+
+    /*
+        ==========================================
+        LIFEPASS DATABASE
+        ==========================================
+
+        For Version 1 we use localStorage.
+
+        This means:
+        - No backend required
+        - No database required
+        - Works directly on GitHub Pages
+        - Data stays in this browser
+
+        Later we can replace this with
+        Firebase / Supabase / another database.
+    */
+
+
+    let passports =
+        JSON.parse(localStorage.getItem("lifepassData")) || [];
+
+
+    /* ===============================
+       SAVE DATA
+    =============================== */
+
+    function saveData() {
+
+        localStorage.setItem(
+            "lifepassData",
+            JSON.stringify(passports)
+        );
+
+    }
+
+
+    /* ===============================
+       GENERATE LIFEPASS ID
+    =============================== */
+
+    function generateID() {
+
+        const random =
+            Math.random()
+                .toString(36)
+                .substring(2, 8)
+                .toUpperCase();
+
+        return "LP-" + random;
+
+    }
+
+
+    /* ===============================
+       SHOW CREATE PANEL
+    =============================== */
+
+    function showCreate() {
+
+        hidePanels();
+
+        document
+            .getElementById("createPanel")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("app")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* ===============================
+       SHOW SEARCH PANEL
+    =============================== */
+
+    function showSearch() {
+
+        hidePanels();
+
+        document
+            .getElementById("searchPanel")
+            .classList.remove("hidden");
+
+        document
+            .getElementById("app")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+        searchPassports();
+
+    }
+
+
+    /* ===============================
+       HIDE ALL PANELS
+    =============================== */
+
+    function hidePanels() {
+
+        document
+            .getElementById("createPanel")
+            .classList.add("hidden");
+
+        document
+            .getElementById("searchPanel")
+            .classList.add("hidden");
+
+        document
+            .getElementById("viewPanel")
+            .classList.add("hidden");
+
+    }
+
+
+    /* ===============================
+       PRODUCT CARD
+    =============================== */
+
+    function selectProduct(type) {
+
+        showCreate();
+
+        document
+            .getElementById("productType")
+            .value = type;
+
+    }
+
+
+    /* ===============================
+       CREATE PASSPORT
+    =============================== */
+
+    document
+        .getElementById("passportForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const passport = {
+
+                id: generateID(),
+
+                productType:
+                    document.getElementById("productType").value,
+
+                productName:
+                    document.getElementById("productName").value,
+
+                brand:
+                    document.getElementById("brand").value,
+
+                model:
+                    document.getElementById("model").value,
+
+                serial:
+                    document.getElementById("serial").value,
+
+                purchaseDate:
+                    document.getElementById("purchaseDate").value,
+
+                warrantyDate:
+                    document.getElementById("warrantyDate").value,
+
+                owner:
+                    document.getElementById("owner").value,
+
+                price:
+                    document.getElementById("price").value,
+
+                notes:
+                    document.getElementById("notes").value,
+
+                created:
+                    new Date().toISOString(),
+
+                history: [
+
+                    {
+
+                        type: "Product Registered",
+
+                        date:
+                            new Date().toLocaleDateString(),
+
+                        owner:
+                            document.getElementById("owner").value
+
+                    }
+
+                ]
+
+            };
+
+
+            passports.push(passport);
+
+            saveData();
+
+
+            document
+                .getElementById("passportForm")
+                .reset();
+
+
+            showPassport(passport.id);
+
+        });
+
+
+    /* ===============================
+       SEARCH PASSPORTS
+    =============================== */
+
+    function searchPassports() {
+
+        const search =
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+
+        const results =
+            document.getElementById("searchResults");
+
+
+        if (passports.length === 0) {
+
+            results.innerHTML = `
+                <div class="empty">
+                    No passports have been created yet.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        const filtered =
+            passports.filter(function(passport) {
+
+                return (
+
+                    passport.id.toLowerCase().includes(search) ||
+
+                    passport.productName
+                        .toLowerCase()
+                        .includes(search) ||
+
+                    passport.brand
+                        .toLowerCase()
+                        .includes(search) ||
+
+                    passport.serial
+                        .toLowerCase()
+                        .includes(search)
+
+                );
+
+            });
+
+
+        if (filtered.length === 0) {
+
+            results.innerHTML = `
+                <div class="empty">
+                    No matching passport found.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        results.innerHTML = filtered.map(function(passport) {
+
+            return `
+
+                <div
+                    class="detail"
+                    style="margin-top:15px;"
+                >
+
+                    <strong>
+                        ${escapeHTML(passport.productName)}
+                    </strong>
+
+                    <p style="margin:6px 0;color:#64748b;">
+                        ${escapeHTML(passport.brand)}
+                        •
+                        ${escapeHTML(passport.productType)}
+                    </p>
+
+                    <p style="font-size:13px;color:#2563eb;">
+                        ${escapeHTML(passport.id)}
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="small-btn"
+                        onclick="showPassport('${passport.id}')"
+                    >
+                        View Passport
+                    </button>
+
+                    <button
+                        class="danger-btn"
+                        onclick="deletePassport('${passport.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+    }
+
+
+    /* ===============================
+       SHOW PASSPORT
+    =============================== */
+
+    function showPassport(id) {
+
+        const passport =
+            passports.find(function(item) {
+
+                return item.id === id;
+
+            });
+
+
+        if (!passport) {
+
+            alert("Passport not found.");
+
+            return;
+
+        }
+
+
+        hidePanels();
+
+        document
+            .getElementById("viewPanel")
+            .classList.remove("hidden");
+
+
+        const display =
+            document.getElementById("passportDisplay");
+
+
+        display.innerHTML = `
+
+            <div class="passport">
+
+                <div class="passport-header">
+
+                    <h2>
+                        LIFEPASS
+                    </h2>
+
+                    <p style="margin-top:5px;">
+                        Digital Product Passport
+                    </p>
+
+                </div>
+
+
+                <div class="passport-body">
+
+                    <div class="passport-id">
+
+                        LIFEPASS ID:
+                        ${escapeHTML(passport.id)}
+
+                    </div>
+
+
+                    <div class="detail-grid">
+
+                        <div class="detail">
+
+                            <small>Product</small>
+
+                            <strong>
+                                ${escapeHTML(passport.productName)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Product Type</small>
+
+                            <strong>
+                                ${escapeHTML(passport.productType)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Brand</small>
+
+                            <strong>
+                                ${escapeHTML(passport.brand)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Model Number</small>
+
+                            <strong>
+                                ${escapeHTML(passport.model || "Not provided")}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Serial Number</small>
+
+                            <strong>
+                                ${escapeHTML(passport.serial || "Not provided")}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Current Owner</small>
+
+                            <strong>
+                                ${escapeHTML(passport.owner)}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Purchase Date</small>
+
+                            <strong>
+                                ${escapeHTML(passport.purchaseDate || "Not provided")}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Warranty Until</small>
+
+                            <strong>
+                                ${escapeHTML(passport.warrantyDate || "Not provided")}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>Purchase Price</small>
+
+                            <strong>
+                                ${
+                                    passport.price
+                                    ? "₹" + escapeHTML(passport.price)
+                                    : "Not provided"
+                                }
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="history">
+
+                        <h3>
+                            📜 Product History
+                        </h3>
+
+                        <br>
+
+                        ${renderHistory(passport)}
+
+                    </div>
+
+
+                    ${
+                        passport.notes
+                        ? `
+
+                        <div class="history">
+
+                            <h3>
+                                📝 Notes
+                            </h3>
+
+                            <div
+                                class="detail"
+                                style="margin-top:12px;"
+                            >
+                                ${escapeHTML(passport.notes)}
+                            </div>
+
+                        </div>
+
+                        `
+                        : ""
+                    }
+
+
+                    <div
+                        style="margin-top:25px;"
+                    >
+
+                        <button
+                            class="small-btn"
+                            onclick="showSearch()"
+                        >
+                            ← Back
+                        </button>
+
+                        <button
+                            class="danger-btn"
+                            onclick="deletePassport('${passport.id}')"
+                        >
+                            Delete Passport
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        document
+            .getElementById("app")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    /* ===============================
+       HISTORY
+    =============================== */
+
+    function renderHistory(passport) {
+
+        if (!passport.history ||
+            passport.history.length === 0) {
+
+            return `
+                <div class="empty">
+                    No history available.
+                </div>
+            `;
+
+        }
+
+
+        return passport.history.map(function(item) {
+
+            return `
+
+                <div class="history-item">
+
+                    <strong>
+                        ${escapeHTML(item.type)}
+                    </strong>
+
+                    <span>
+                        Date:
+                        ${escapeHTML(item.date)}
+                    </span>
+
+                    ${
+                        item.owner
+                        ? `<span> • Owner: ${escapeHTML(item.owner)}</span>`
+                        : ""
+                    }
+
+                </div>
+
+            `;
+
+        }).join("");
+
+    }
+
+
+    /* ===============================
+       DELETE PASSPORT
+    =============================== */
+
+    function deletePassport(id) {
+
+        const passport =
+            passports.find(function(item) {
+
+                return item.id === id;
+
+            });
+
+
+        if (!passport) return;
+
+
+        const confirmDelete =
+            confirm(
+                "Delete this LIFEPASS passport?"
+            );
+
+
+        if (!confirmDelete) return;
+
+
+        passports =
+            passports.filter(function(item) {
+
+                return item.id !== id;
+
+            });
+
+
+        saveData();
+
+        showSearch();
+
+    }
+
+
+    /* ===============================
+       SECURITY
+       Prevent HTML injection
+    =============================== */
+
+    function escapeHTML(value) {
+
+        if (value === undefined ||
+            value === null) {
+
+            return "";
+
+        }
+
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* ===============================
+       INITIAL PAGE
+    =============================== */
+
+    hidePanels();
+
+</script>
+
+</body>
+</html>
+```
